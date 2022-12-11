@@ -15,8 +15,8 @@ class CreateBondsTable extends Migration
     {
         Schema::create('bonds', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('emission_date')->nullable(false);
-            $table->timestamp('last_turnover_date')->nullable(false);
+            $table->date('emission_date')->nullable(false);
+            $table->date('last_turnover_date')->nullable(false);
             $table->decimal('nominal_price')->nullable(false);
             $table->double('pay_frequency')->nullable(false);
             $table->double('percent_calculation_period')->nullable(false);

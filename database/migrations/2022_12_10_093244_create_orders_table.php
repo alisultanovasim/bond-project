@@ -16,10 +16,11 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('bond_id')->nullable(false);
-            $table->timestamp('order_date')->nullable(false);
+            $table->date('order_date')->nullable(false);
             $table->double('bond_amount')->nullable(false);
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('bond_id')->references('id')->on('bonds')->onDelete('cascade');
         });
     }
 

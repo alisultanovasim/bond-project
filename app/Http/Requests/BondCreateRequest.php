@@ -25,11 +25,11 @@ class BondCreateRequest extends FormRequest
     {
         return [
             'emission_date'=>['required','date'],
-            'last_turnover_date'=>['required','date'],
+            'last_turnover_date'=>['required','after:emission_date','date'],
             'nominal_price'=>['required','numeric'],
             'pay_frequency'=>['required','numeric','in:1,2,4,12'],
             'percent_calculation_period'=>['required','numeric','in:360,364,365'],
-            'coupon_percent'=>['required','numeric','min:1','max:100']
+            'coupon_percent'=>['required','numeric','between:1,100']
         ];
     }
 }

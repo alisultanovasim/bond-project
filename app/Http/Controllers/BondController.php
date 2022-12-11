@@ -43,7 +43,7 @@ class BondController extends Controller
      */
     public function show($id)
     {
-        return $this->dataResponse(Bond::query()->findOrFail($id),Response::HTTP_OK);
+        return $this->dataResponse(Bond::query()->with(['orders'])->findOrFail($id),Response::HTTP_OK);
     }
 
     /**
@@ -56,7 +56,7 @@ class BondController extends Controller
     public function update(BondUpdateRequest $request, $id,BondRepostory $bondRepostory)
     {
         $bondRepostory->update($id,$request);
-        return $this->successResponse(['status'=>'Uğurlu','mesaj'=>'İstiqraz uğurla olundu!'],Response::HTTP_OK);
+        return $this->successResponse(['status'=>'Uğurlu','mesaj'=>'İstiqraz yenilendi!'],Response::HTTP_OK);
     }
 
     /**
